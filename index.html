@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visalink - کارت هوشمند NFC</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #4cc9f0;
+      --dark: #2b2d42;
+      --light: #f8f9fa;
+      --radius: 16px;
+      --whatsapp: #25D366;
+      --instagram: #E1306C;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body {
+      background: linear-gradient(135deg, #e0f2f9 0%, #f8f9fa 100%);
+      color: var(--dark);
+      font-family: "Vazirmatn", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border-radius: var(--radius);
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(67, 97, 238, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+
+    .header {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .title {
+      color: var(--primary);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      color: var(--secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .widget {
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 20px 0;
+      border: 1px solid rgba(67, 97, 238, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .widget:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.15);
+    }
+
+    .contact-widget {
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(76, 201, 240, 0.05) 100%);
+    }
+
+    .social-widget {
+      padding: 20px;
+      border-left: 4px solid;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      align-items: center;
+    }
+
+    .info-label {
+      color: var(--primary);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .info-value {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .social-title {
+      color: var(--dark);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-align: right;
+    }
+
+    .social-value {
+      direction: ltr;
+      unicode-bidi: plaintext;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-align: right;
+      display: inline-block;
+      color: var(--dark);
+    }
+
+    .card-number,
+    .phone-number {
+      direction: ltr;
+      unicode-bidi: plaintext;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      margin: 12px 0;
+      color: var(--dark);
+    }
+
+    .address {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 20px 0;
+      text-align: right;
+      color: var(--dark);
+    }
+
+    .btn {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border: none;
+      padding: 14px 0;
+      border-radius: 50px;
+      margin: 20px 0 10px;
+      cursor: pointer;
+      font-family: "Vazirmatn";
+      font-weight: 600;
+      transition: var(--transition);
+      display: block;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .whatsapp-widget {
+      border-left-color: var(--whatsapp);
+      background: rgba(37, 211, 102, 0.05);
+    }
+
+    .instagram-widget {
+      border-left-color: var(--instagram);
+      background: rgba(225, 48, 108, 0.05);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="title gradient-text">Visalink</div>
+      <div class="subtitle">سیستم کارت هوشمند NFC</div>
+    </div>
+
+    <div class="widget">
+      <div class="info-row">
+        <div class="info-label">صاحب کارت</div>
+        <div class="info-value">محمد کردانی</div>
+      </div>
+      <div class="card-number">6037 9973 7775 1129</div>
+      <button class="btn" onclick="copyToClipboard('6037997377751129', event)">
+        <span class="gradient-text" style="-webkit-text-fill-color: white;">کپی شماره کارت</span>
+      </button>
+    </div>
+
+    <div class="widget contact-widget">
+      <div class="info-row">
+        <div class="info-label">تماس تلفنی</div>
+        <div class="phone-number">0933 341 4926</div>
+      </div>
+      <a href="tel:+989333414926" class="btn">تماس </a>
+    </div>
+
+    <div class="widget social-widget whatsapp-widget">
+      <div class="social-title">واتساپ</div>
+      <div class="social-value">0933 341 4926</div>
+    </div>
+
+    <div class="widget social-widget instagram-widget">
+      <div class="social-title">اینستاگرام</div>
+      <div class="social-value">@visalink</div>
+    </div>
+
+    <div class="widget">
+      <div class="info-label">آدرس فروشگاه</div>
+      <div class="address">
+        تهران، خیابان انقلاب، بین وصال و فلسطین،
+        <br />پلاک ۱۲۳۴، طبقه دوم، واحد ۵
+      </div>
+      <div style="width: 100%; height: 200px; margin: 15px 0; border-radius: 12px; overflow: hidden;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.941344291083!2d51.40215431520612!3d35.71529798019132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8df9c3798e9241%3A0x6b47a785d5f0eebd!2z2KfZhNmE2KfYtdmI2Kkg2KfZhNmE2KfYsSDYp9mE2YXYp9iz2KfZhNin2LPYqCDZiNiq2KzZhtmF2YMg2KfZhNmK2Kkg2KfZhNmF2Yog2KfZhNi52YbYqiDZiNmI2YjYp9ix2KfZhNio!5e0!3m2!1sfa!2sir!4v1690415700000!5m2!1sfa!2sir"
+          width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <a href="https://maps.google.com?q=35.715298,51.404343" target="_blank" class="btn btn-secondary">
+        <span class="gradient-text">مشاهده در نقشه گوگل</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function copyToClipboard(text, event) {
+      navigator.clipboard
+        .writeText(text.replace(/\s+/g, ""))
+        .then(() => {
+          const span = event.target.querySelector("span");
+          if (span) {
+            const originalText = span.innerHTML;
+            span.innerHTML = 'کپی شد!';
+            setTimeout(() => {
+              span.innerHTML = originalText;
+            }, 2000);
+          }
+        })
+        .catch((err) => console.error("خطا:", err));
+    }
+  </script>
+</body>
+</html>
